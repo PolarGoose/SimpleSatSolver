@@ -32,3 +32,10 @@ DownloadAndUnpackSatFiles -Uri https://www.cs.ubc.ca/~hoos/SATLIB/Benchmarks/SAT
 DownloadAndUnpackSatFiles -Uri https://www.cs.ubc.ca/~hoos/SATLIB/Benchmarks/SAT/RND3SAT/uuf50-218.tar.gz `
                           -OutFile $BuildDir/uuf50-218.tar.gz `
                           -OutDir $OutputDir/test_files/unsat
+
+DownloadAndUnpackSatFiles -Uri https://www.cs.ubc.ca/~hoos/SATLIB/Benchmarks/SAT/RND3SAT/uf100-430.tar.gz `
+                          -OutFile $BuildDir/uf100-430.tar.gz `
+                          -OutDir $OutputDir/test_files/sat
+DownloadAndUnpackSatFiles -Uri https://www.cs.ubc.ca/~hoos/SATLIB/Benchmarks/SAT/RND3SAT/uuf100-430.tar.gz `
+                          -OutFile $BuildDir/uuf100-430.tar.gz `
+                          -OutDir $OutputDir/test_files/unsat
