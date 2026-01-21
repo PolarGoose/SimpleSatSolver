@@ -17,13 +17,13 @@ public class SatSolverTest_UseTestFiles
     public void Satisfiable_files(string testFile)
     {
         var (varCount, clauses) = DimacsParser.Parse(testFile);
-        Assert.That(SatSolver.Solve(varCount, clauses, out var model), Is.True, $"File: {testFile}");
+        Assert.That(SatSolver.Solve(varCount, clauses), Is.Not.Null, $"File: {testFile}");
     }
 
     [TestCaseSource(nameof(UnsatFiles))]
     public void Unsatisfiable_files(string testFile)
     {
         var (varCount, clauses) = DimacsParser.Parse(testFile);
-        Assert.That(SatSolver.Solve(varCount, clauses, out var model), Is.False, $"File: {testFile}");
+        Assert.That(SatSolver.Solve(varCount, clauses), Is.Null, $"File: {testFile}");
     }
 }

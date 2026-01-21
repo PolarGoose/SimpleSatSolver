@@ -15,11 +15,12 @@ if (!File.Exists(cnfFilePath))
 
 var (varCount, clauses) = DimacsParser.Parse(cnfFilePath);
 
-if (SatSolver.Solve(varCount, clauses, out var solution))
+var solution = SatSolver.Solve(varCount, clauses);
+if (solution.HasValue)
 {
     Console.WriteLine("SAT");
-    for (int v = 1; v <= varCount; v++)
-        Console.WriteLine($"x{v} = {solution[v]}");
+    foreach (var (value, index) in solution.Value.Values.Select((v, i) => (v, i)))
+        Console.WriteLine($"x{index} = {value}");
 }
 else
 {

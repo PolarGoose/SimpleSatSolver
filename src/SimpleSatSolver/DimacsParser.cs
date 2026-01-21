@@ -11,11 +11,11 @@ namespace SimpleSatSolver;
 //   0
 public static partial class DimacsParser
 {
-    public static (int varCount, List<int[]> clauses) Parse(string dimacsFilePath)
+    public static (int varCount, List<Clause> clauses) Parse(string dimacsFilePath)
     {
         int varCount = 0;
-        var clauses = new List<int[]>();
-        var current = new List<int>();
+        var clauses = new List<Clause>();
+        var current = new List<Literal>();
 
         foreach (var line in File.ReadLines(dimacsFilePath).Select(l => l.Trim()))
         {
@@ -42,12 +42,12 @@ public static partial class DimacsParser
                 // The clause line ends with 0
                 if (x == 0)
                 {
-                    clauses.Add([.. current]);
+                    clauses.Add(new Clause([.. current]));
                     current.Clear();
                 }
                 else
                 {
-                    current.Add(x);
+                    current.Add(new Literal(x));
                 }
             }
         }
